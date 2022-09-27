@@ -2,18 +2,17 @@ from xmlrpc.server import SimpleXMLRPCServer
 from xmlrpc.server import SimpleXMLRPCRequestHandler
 from Hospedagens import Hospe
 
-hospe = []
+hos = []
 
-hospe1 = Hospe("Marceio", "Ibis", 500)
-hospe2 = Hospe("Sao Paulo", "Cabana o seu zé", 600)
-hospe3 = Hospe("Fernando de noronha", "", 700)
-hospe4 = Hospe("Belo Monte", "M", 800)
+hospe1 = Hospe.Hospe("Marceio", "Ibis", 5)
+hospe2 = Hospe.Hospe("Sao Paulo", "Cabana o seu zé", 6)
+hospe3 = Hospe.Hospe("Fernando de noronha", "", 7)
+hospe4 = Hospe.Hospe("Belo Monte", "M", 8)
 
-hospe.append(hospe1) 
-hospe.append(hospe2)
-hospe.append(hospe3)
-hospe.append(hospe4)
-
+hos.append(hospe1) 
+hos.append(hospe2)
+hos.append(hospe3)
+hos.append(hospe4)
 
 
 
@@ -26,15 +25,14 @@ with SimpleXMLRPCServer(('192.168.0.104', 11290),
                         requestHandler=RequestHandler) as server:
     server.register_introspection_functions()
 
-    def barato(valor):
-        for i in hospe:
-            if(i.valor < valor):
-                print
-                print("Na cidade " + i.cidade + "\n, O hotel "+ i.hotel+ "esta com o valor de: " +i.valor)
+    def barato(x):
+        ho = []
+        for i in hos:
+            if(i.valor < x):
+                r = (i.cidade, i.hotel, i.valor)
+                ho.append(r)
+        return ho
 
-
-    
-    
     server.register_function(barato, 'barato')
 
     server.serve_forever()
