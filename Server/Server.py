@@ -26,11 +26,11 @@ with SimpleXMLRPCServer(('192.168.0.191', 8000),
     server.register_function(adder_function, 'add')
 
 
-    def serverAzul(x, y):
+    def maisBarato(x):
         serverAzul = xmlrpc.client.ServerProxy('http://192.168.0.104:11290')
-        return serverAzul.zero(x,y)
+        return serverAzul.barato(x)
 
-    server.register_function(serverAzul, 'serverAzul')
+    server.register_function(maisBarato, 'maisBarato')
 
     # Register an instance; all the methods of the instance are
     # published as XML-RPC methods (in this case, just 'mul').
