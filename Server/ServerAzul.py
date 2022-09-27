@@ -4,10 +4,10 @@ from Hospedagens import Hospe
 
 hos = []
 
-hospe1 = Hospe.Hospe("Marceio", "Ibis", 5)
-hospe2 = Hospe.Hospe("Sao Paulo", "Cabana o seu zé", 6)
-hospe3 = Hospe.Hospe("Fernando de noronha", "", 7)
-hospe4 = Hospe.Hospe("Belo Monte", "M", 8)
+hospe1 = Hospe.Hospe("Marceio", "Azul", 5)
+hospe2 = Hospe.Hospe("Sao Paulo", "Azul", 6)
+hospe3 = Hospe.Hospe("Fernando de noronha", "Azul", 7)
+hospe4 = Hospe.Hospe("Belo Monte", "Azul", 8)
 
 hos.append(hospe1) 
 hos.append(hospe2)
