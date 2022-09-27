@@ -29,7 +29,7 @@ with SimpleXMLRPCServer(('192.168.0.104', 12000),
     def baratoIbis(x):
         ho = []
         for i in hos:
-            if(i.valor < x):
+            if(i.valor <= x):
                 r = (i.cidade, i.hotel, i.valor)
                 ho.append(r)
         return ho
