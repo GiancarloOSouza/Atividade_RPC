@@ -28,7 +28,21 @@ with SimpleXMLRPCServer(('192.168.0.191', 8000),
 
     def maisBarato(x):
         serverAzul = xmlrpc.client.ServerProxy('http://192.168.0.104:11290')
-        return serverAzul.barato(x)
+        serverIbis = xmlrpc.client.ServerProxy('http://192.168.0.104:12000')
+
+        serverAzulB = serverAzul.barato(x)
+        serverIbisB = serverIbis.baratoIbis(x)
+
+        total = serverAzulB.len() + serverIbisB.len()
+
+        for i in total:
+            fila = []
+            if(serverAzulB.valor <= serverIbisB.valor):
+                fila.append(serverAzulB[i])
+            else:
+                fila.append(serverIbisB[i])
+        return fila
+        
 
     server.register_function(maisBarato, 'maisBarato')
 
